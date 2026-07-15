@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thinesh — PhD Candidate, University of Stuttgart</title>
+<meta name="description" content="Thinesh — PhD candidate at the University of Stuttgart and IMPRS-IS, working on parameter-efficient adaptation of frozen vision foundation models.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #fafaf8;
+    --ink: #202325;
+    --ink-soft: #565b5f;
+    --ink-faint: #8a8f92;
+    --accent: #45577a;
+    --accent-bg: #eceff4;
+    --line: #e3e2dd;
+    --max: 680px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:4.5rem 1.5rem 5rem;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .header{display:flex;align-items:center;gap:1.3rem;margin-bottom:0.4rem;}
+  .avatar{
+    width:76px;height:76px;border-radius:50%;
+    background:var(--accent-bg);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Newsreader',serif;font-size:1.9rem;font-weight:500;
+    flex-shrink:0;
+    object-fit:cover;
+  }
+  .institutions{
+    display:flex;flex-wrap:wrap;gap:0.5rem;margin:0 0 1.5rem;
+  }
+  .institutions a{
+    font-size:0.8rem;color:var(--ink-soft);
+    background:#fff;border:1px solid var(--line);
+    padding:0.3rem 0.7rem;border-radius:6px;
+  }
+  .institutions a:hover{color:var(--accent);border-color:var(--accent);text-decoration:none;}
+  h1{
+    font-family:'Newsreader',serif;font-weight:500;
+    font-size:1.9rem;margin:0 0 0.25rem;letter-spacing:-0.01em;
+  }
+  .tagline{color:var(--ink-soft);font-size:1rem;margin:0;}
+
+  .affil{
+    margin:1.4rem 0 0.9rem;font-size:0.92rem;color:var(--ink-soft);
+  }
+  .affil a{color:var(--ink-soft);border-bottom:1px solid var(--line);}
+  .affil a:hover{color:var(--accent);border-bottom-color:var(--accent);text-decoration:none;}
+  .affil .dot{margin:0 0.5rem;color:var(--line);}
+
+  .contact{margin:0 0 2.6rem;font-size:0.88rem;}
+  .contact a{
+    color:var(--ink-soft);margin-right:1rem;
+    padding-bottom:2px;border-bottom:1px solid transparent;
+  }
+  .contact a:hover{color:var(--accent);border-bottom-color:var(--accent);text-decoration:none;}
+
+  section{margin-bottom:2.6rem;}
+  h2{
+    font-family:'Newsreader',serif;font-weight:500;font-size:1.15rem;
+    margin:0 0 1rem;color:var(--ink);
+  }
+
+  .about p{color:var(--ink-soft);margin:0 0 1rem;max-width:60ch;}
+  .about strong{color:var(--ink);font-weight:600;}
+
+  .tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .tag{
+    background:var(--accent-bg);color:var(--accent);
+    font-size:0.83rem;padding:0.32rem 0.75rem;border-radius:100px;
+  }
+
+  .news-list{list-style:none;margin:0;padding:0;}
+  .news-list li{
+    padding:0.55rem 0;color:var(--ink-soft);font-size:0.95rem;
+  }
+  .news-list .date{
+    color:var(--accent);font-weight:600;font-family:'Inter',sans-serif;
+  }
+
+  .pub{
+    border-bottom:1px solid var(--line);padding:1.4rem 0;
+    display:flex;gap:1.3rem;align-items:flex-start;
+  }
+  .pub:last-child{border-bottom:none;}
+  .pub-thumb{
+    width:130px;height:90px;flex-shrink:0;border-radius:6px;
+    background:var(--accent-bg);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink-faint);font-size:0.72rem;text-align:center;
+    overflow:hidden;
+  }
+  .pub-thumb img{width:100%;height:100%;object-fit:cover;}
+  .pub-venue{
+    display:inline-block;font-size:0.76rem;color:var(--accent);
+    background:var(--accent-bg);padding:0.18rem 0.6rem;border-radius:4px;
+    margin-bottom:0.5rem;
+  }
+  .pub-title{
+    font-family:'Newsreader',serif;font-weight:500;font-size:1.08rem;
+    margin:0 0 0.3rem;color:var(--ink);
+  }
+  .pub-authors{color:var(--ink-soft);font-size:0.88rem;margin:0 0 0.4rem;}
+  .pub-authors .me{color:var(--ink);font-weight:600;}
+  .pub-desc{color:var(--ink-soft);font-size:0.93rem;margin:0 0 0.5rem;max-width:56ch;}
+  .pub-links{font-size:0.85rem;}
+  .pub-links a{margin-right:0.9rem;}
+
+  .edu{border-bottom:1px solid var(--line);padding:1.3rem 0;}
+  .edu:last-child{border-bottom:none;}
+  .edu-when{color:var(--ink-faint);font-size:0.82rem;margin:0 0 0.35rem;}
+  .edu-title{
+    font-family:'Newsreader',serif;font-weight:500;font-size:1.05rem;
+    margin:0 0 0.25rem;color:var(--ink);
+  }
+  .edu-place{color:var(--ink-soft);font-size:0.92rem;margin:0 0 0.4rem;}
+  .edu-desc{color:var(--ink-soft);font-size:0.92rem;margin:0;max-width:60ch;}
+
+  footer{
+    margin-top:3rem;font-size:0.82rem;color:var(--ink-faint);
+    border-top:1px solid var(--line);padding-top:1.3rem;
+  }
+
+  @media(max-width:520px){
+    .wrap{padding:3rem 1.25rem 3.5rem;}
+    .header{gap:1rem;}
+    .avatar{width:64px;height:64px;font-size:1.5rem;}
+    h1{font-size:1.6rem;}
+    .pub{flex-direction:column;}
+    .pub-thumb{width:100%;height:150px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <img class="avatar" src="assets/img/profile.jpg" alt="Photo of Thinesh" onerror="this.style.display='none'">
+    <div>
+      <h1>Thinesh</h1>
+      <p class="tagline">PhD Candidate in Video Foundation Model Adaptation</p>
+    </div>
+  </div>
+
+  <div class="institutions">
+    <a href="https://www.uni-stuttgart.de/en/">University of Stuttgart</a>
+    <a href="https://imprs-is.mpg.de/">IMPRS-IS</a>
+    <a href="https://www.amazon.science/">Amazon</a>
+    <a href="https://www.uni-muenster.de/Informatik/en/">Institut für Informatik, Münster</a>
+  </div>
+
+  <p class="contact">
+    <a href="mailto:your-email@example.com">Email</a><a href="https://github.com/yourusername">GitHub</a><a href="https://scholar.google.com/">Scholar</a><a href="https://www.linkedin.com/">LinkedIn</a><a href="#">CV</a>
+  </p>
+
+  <section class="about">
+    <h2>About</h2>
+    <p>
+      I am a PhD candidate at the University of Stuttgart, advised by
+      <strong>Prof. Dr. Alina Roitberg</strong>, and a member of the
+      International Max Planck Research School for Intelligent Systems
+      (IMPRS-IS). My research focuses on
+      <strong>parameter-efficient adaptation of frozen vision foundation
+      models</strong> &mdash; such as DINOv2 and CLIP &mdash; for
+      fine-grained video understanding, favoring lightweight and often
+      training-free methods over full fine-tuning.
+    </p>
+    </p>
+  </section>
+
+  <section>
+    <h2>Research interests</h2>
+    <div class="tags">
+      <span class="tag">Video Understanding</span>
+      <span class="tag">Vision Foundation Models</span>
+      <span class="tag">Parameter-Efficient Adaptation</span>
+      <span class="tag">Fine-Grained Action Recognition</span>
+      <span class="tag">Self-Supervised Learning</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>News</h2>
+    <ul class="news-list">
+      <li><span class="date">12/2026</span> &mdash; I move to Münster's Institut für Informatik.</li>
+      <li><span class="date">08/2026</span> &mdash; I join Amazon as an Applied Scientist Intern in Santa Clara for four months.</li>
+      <li><span class="date">2026</span> &mdash; Our paper <strong>Frame2Freq</strong> was accepted at CVPR 2026!</li>
+      <li><span class="date">2026</span> &mdash; Our paper <strong>STEP (Order Matters)</strong> was accepted at ICRA 2026!</li>
+      <li><span class="date">2026</span> &mdash; Our workshop paper <strong>ProGraD</strong> was accepted at the SAUAFG workshop, CVPR 2026!</li>
+      <li><span class="date">2025</span> &mdash; <strong>T-MASK</strong> was named a Best Student Paper Finalist at ITSC 2025!</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Publications</h2>
+
+    <div class="pub">
+      <div class="pub-thumb"><img src="assets/img/frame2freq_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div>
+        <span class="pub-venue">CVPR 2026</span>
+        <p class="pub-title">Frame2Freq</p>
+        <p class="pub-authors"><span class="me">Thinesh</span>, Constantin Seibold, <em>[+ coauthors &mdash; add full list]</em></p>
+        <p class="pub-desc">Multi-windowed FFT adapters for fine-grained video recognition.</p>
+        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-thumb"><img src="assets/img/step_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div>
+        <span class="pub-venue">ICRA 2026</span>
+        <p class="pub-title">STEP (Order Matters)</p>
+        <p class="pub-authors"><span class="me">Thinesh</span>, <em>[+ coauthors &mdash; add full list]</em></p>
+        <p class="pub-desc">Nearly symmetric action probing.</p>
+        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-thumb"><img src="assets/img/tmask_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div>
+        <span class="pub-venue">ITSC 2025 &middot; Best Student Paper Finalist</span>
+        <p class="pub-title">T-MASK</p>
+        <p class="pub-authors"><span class="me">Thinesh</span>, <em>[+ coauthors &mdash; add full list]</em></p>
+        <p class="pub-desc">View-invariant token selection.</p>
+        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-thumb"><img src="assets/img/prograd_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div>
+        <span class="pub-venue">CVPR 2026 &middot; SAUAFG Workshop</span>
+        <p class="pub-title">ProGraD</p>
+        <p class="pub-authors"><span class="me">Thinesh</span>, Chengzheng Yang, <em>[+ coauthors &mdash; add full list]</em></p>
+        <p class="pub-desc">Group activity detection; shows that substituting the vision foundation model degrades performance, with the decoder as the bottleneck.</p>
+        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-thumb"><img src="assets/img/scenegraphrag_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div>
+        <span class="pub-venue"></span>
+        <p class="pub-title">SceneGraphRAG</p>
+        <p class="pub-authors"><em>[first author]</em>, <span class="me">Thinesh</span>, <em>[+ coauthors &mdash; add full list]</em></p>
+        <p class="pub-desc">Robot grounding via 3D scene graphs.</p>
+        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu">
+      <p class="edu-when">Ongoing</p>
+      <p class="edu-title">Ph.D., Computer Science</p>
+      <p class="edu-place">University of Stuttgart &middot; IMPRS-IS</p>
+      <p class="edu-desc">Parameter-efficient adaptation of frozen vision foundation models for fine-grained video understanding. Advised by Prof. Dr. Alina Roitberg.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; Thinesh &middot; last updated 2026
+  </footer>
+
+</div>
+</body>
+</html>
