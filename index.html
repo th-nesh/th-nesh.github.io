@@ -3,133 +3,225 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thinesh — PhD Candidate, University of Stuttgart</title>
-<meta name="description" content="Thinesh — PhD candidate at the University of Stuttgart and IMPRS-IS, working on parameter-efficient adaptation of frozen vision foundation models.">
+<title>Thinesh Thiyakesan Ponbagavathi — PhD Candidate, University of Stuttgart</title>
+<meta name="description" content="Thinesh Thiyakesan Ponbagavathi — PhD candidate at the University of Stuttgart and IMPRS-IS, working on parameter-efficient adaptation of vision foundation models for fine-grained video understanding.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+(function(){
+  var t = localStorage.getItem('theme');
+  if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches))
+    document.documentElement.setAttribute('data-theme', 'dark');
+})();
+</script>
 <style>
   :root{
-    --bg: #fafaf8;
+    --bg: #f7f8fb;
+    --bg-top: #f8f9fc;
+    --bg-bottom: #f2f4f8;
     --ink: #202325;
     --ink-soft: #565b5f;
     --ink-faint: #8a8f92;
     --accent: #45577a;
     --accent-bg: #eceff4;
     --line: #e3e2dd;
-    --max: 680px;
+    --link: #3b6fc8;
+    --thumb-bg: #fff;
+    --max: 720px;
+  }
+  [data-theme="dark"]{
+    --bg: #16171a;
+    --bg-top: #181a1f;
+    --bg-bottom: #121316;
+    --ink: #e8eaed;
+    --ink-soft: #adb2b8;
+    --ink-faint: #7a8088;
+    --accent: #9eb4d4;
+    --accent-bg: #252830;
+    --line: #2e3238;
+    --link: #7eb0ff;
+    --thumb-bg: #fff;
+    color-scheme: dark;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    background:var(--bg);
+    min-height:100vh;
+    background:linear-gradient(180deg,var(--bg-top) 0%,var(--bg-bottom) 100%);
+    background-attachment:fixed;
     color:var(--ink);
     font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
     font-size:16px;
     line-height:1.65;
+    transition:background .2s,color .2s;
   }
-  .wrap{max-width:var(--max);margin:0 auto;padding:4.5rem 1.5rem 5rem;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:4.5rem 1.5rem 5rem;position:relative;}
   a{color:var(--accent);text-decoration:none;}
   a:hover{text-decoration:underline;}
 
-  .header{display:flex;align-items:center;gap:1.3rem;margin-bottom:0.4rem;}
+  .theme-toggle{
+    position:fixed;top:1.25rem;right:1.25rem;z-index:100;
+    display:inline-flex;align-items:center;gap:0.5rem;
+    font-family:'Inter',sans-serif;font-size:0.78rem;color:var(--ink-faint);
+    background:color-mix(in srgb,var(--bg-top) 88%,transparent);
+    backdrop-filter:blur(8px);
+    padding:0.35rem 0.55rem 0.35rem 0.75rem;cursor:pointer;
+    transition:background .2s,border-color .2s,color .2s;
+  }
+  .theme-toggle:hover{color:var(--ink);border-color:var(--ink-faint);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-switch{
+    width:2.25rem;height:1.25rem;border-radius:999px;
+    background:var(--line);position:relative;flex-shrink:0;
+    transition:background .2s;
+  }
+  .theme-switch::after{
+    content:'';position:absolute;top:2px;left:2px;
+    width:calc(1.25rem - 4px);height:calc(1.25rem - 4px);
+    border-radius:50%;background:var(--bg);
+    box-shadow:0 1px 2px rgba(0,0,0,.15);
+    transition:transform .2s,background .2s;
+  }
+  [data-theme="dark"] .theme-switch{background:var(--accent);}
+  [data-theme="dark"] .theme-switch::after{transform:translateX(1rem);}
+  .theme-toggle .theme-icon{font-size:0.85rem;line-height:1;}
+
+  .header{display:flex;align-items:center;gap:2rem;margin-bottom:0.5rem;}
   .avatar{
-    width:76px;height:76px;border-radius:50%;
+    width:200px;height:200px;border-radius:50%;
     background:var(--accent-bg);color:var(--accent);
     display:flex;align-items:center;justify-content:center;
-    font-family:'Newsreader',serif;font-size:1.9rem;font-weight:500;
+    font-family:'Newsreader',serif;font-size:3rem;font-weight:500;
     flex-shrink:0;
     object-fit:cover;
   }
   .institutions{
-    display:flex;flex-wrap:wrap;gap:0.5rem;margin:0 0 1.5rem;
+    display:flex;flex-wrap:wrap;gap:1.1rem 1.6rem;margin:0 0 2.6rem;align-items:center;
   }
-  .institutions a{
-    font-size:0.8rem;color:var(--ink-soft);
-    background:#fff;border:1px solid var(--line);
-    padding:0.3rem 0.7rem;border-radius:6px;
+  .inst-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    transition:opacity .15s;
   }
-  .institutions a:hover{color:var(--accent);border-color:var(--accent);text-decoration:none;}
+  .inst-badge:hover{opacity:0.72;text-decoration:none;}
+  .inst-badge img{
+    height:2.5rem;width:auto;max-width:12rem;object-fit:contain;display:block;
+  }
+  .inst-badge img.logo-tall{height:3.2rem;}
+  .inst-badge img.logo-wide{height:2.1rem;max-width:9.5rem;}
+  [data-theme="dark"] .inst-badge img[src*="logo-ustuttgart"],
+  [data-theme="dark"] .inst-badge img[src*="logo-amazon"]{
+    filter:brightness(0) invert(1);
+  }
   h1{
     font-family:'Newsreader',serif;font-weight:500;
-    font-size:1.9rem;margin:0 0 0.25rem;letter-spacing:-0.01em;
+    font-size:1.85rem;margin:0 0 0.2rem;letter-spacing:-0.01em;
+    line-height:1.2;
   }
-  .tagline{color:var(--ink-soft);font-size:1rem;margin:0;}
-
-  .affil{
-    margin:1.4rem 0 0.9rem;font-size:0.92rem;color:var(--ink-soft);
+  .tagline{color:var(--ink-soft);font-size:0.98rem;margin:0;}
+  .location{
+    display:inline-flex;align-items:center;gap:0.35rem;
+    color:var(--ink-faint);font-size:0.85rem;margin:0.35rem 0 0;
   }
-  .affil a{color:var(--ink-soft);border-bottom:1px solid var(--line);}
-  .affil a:hover{color:var(--accent);border-bottom-color:var(--accent);text-decoration:none;}
-  .affil .dot{margin:0 0.5rem;color:var(--line);}
 
-  .contact{margin:0 0 2.6rem;font-size:0.88rem;}
+  .icon{
+    width:1em;height:1em;flex-shrink:0;display:block;
+    stroke:currentColor;fill:none;stroke-width:1.75;
+    stroke-linecap:round;stroke-linejoin:round;
+  }
+  .icon-fill{fill:currentColor;stroke:none;}
+
+  .contact{
+    display:flex;flex-wrap:wrap;gap:0.65rem 1.1rem;
+    margin:0 0 2.4rem;font-size:0.88rem;
+  }
   .contact a{
-    color:var(--ink-soft);margin-right:1rem;
+    display:inline-flex;align-items:center;gap:0.4rem;
+    color:var(--ink-soft);
     padding-bottom:2px;border-bottom:1px solid transparent;
   }
   .contact a:hover{color:var(--accent);border-bottom-color:var(--accent);text-decoration:none;}
 
   section{margin-bottom:2.6rem;}
+  .about h2,.news-section h2,.pub-section h2,.edu-section h2{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:0.78rem;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);
+    margin:0 0 0.65rem;padding-bottom:0.65rem;
+    border-bottom:1px solid var(--line);
+  }
   h2{
     font-family:'Newsreader',serif;font-weight:500;font-size:1.15rem;
     margin:0 0 1rem;color:var(--ink);
   }
 
-  .about p{color:var(--ink-soft);margin:0 0 1rem;max-width:60ch;}
-  .about strong{color:var(--ink);font-weight:600;}
-
-  .tags{display:flex;flex-wrap:wrap;gap:0.5rem;}
-  .tag{
-    background:var(--accent-bg);color:var(--accent);
-    font-size:0.83rem;padding:0.32rem 0.75rem;border-radius:100px;
+  .about p{
+    color:var(--ink);margin:0 0 0.9rem;max-width:62ch;
+    font-size:0.94rem;line-height:1.55;
   }
+  .about p:last-child{margin-bottom:0;}
+  .about strong{font-weight:600;}
+  .about a{color:var(--ink);font-weight:600;border-bottom:1px solid var(--line);}
+  .about a:hover{color:var(--accent);border-bottom-color:var(--accent);text-decoration:none;}
 
+  .edu{border-bottom:1px solid var(--line);padding:1.2rem 0;}
+  .edu:last-child{border-bottom:none;}
+  .edu-when{color:var(--ink-faint);font-size:0.82rem;margin:0 0 0.3rem;}
+  .edu-title{
+    font-family:'Newsreader',serif;font-weight:500;font-size:1.05rem;
+    margin:0 0 0.2rem;color:var(--ink);
+  }
+  .edu-place{color:var(--ink-soft);font-size:0.92rem;margin:0 0 0.45rem;}
+  .edu-desc{color:var(--ink-soft);font-size:0.92rem;margin:0;max-width:62ch;}
+
+  .news-scroll{
+    max-height:14.25rem;
+    overflow-y:auto;
+    scrollbar-width:thin;
+    scrollbar-color:var(--line) transparent;
+  }
+  .news-scroll::-webkit-scrollbar{width:6px;}
+  .news-scroll::-webkit-scrollbar-thumb{
+    background:var(--line);border-radius:3px;
+  }
   .news-list{list-style:none;margin:0;padding:0;}
   .news-list li{
-    padding:0.55rem 0;color:var(--ink-soft);font-size:0.95rem;
+    display:grid;grid-template-columns:5.75rem 1fr;gap:1.5rem;
+    padding:0.7rem 0;align-items:baseline;
+    color:var(--ink);font-size:0.94rem;line-height:1.55;
   }
   .news-list .date{
-    color:var(--accent);font-weight:600;font-family:'Inter',sans-serif;
+    color:var(--ink-faint);font-weight:400;font-family:'Inter',sans-serif;
+    text-align:right;
   }
+  .news-list a{color:var(--link);}
+  .news-list a:hover{text-decoration:underline;}
 
   .pub{
-    border-bottom:1px solid var(--line);padding:1.4rem 0;
+    border-bottom:1px solid var(--line);padding:0.85rem 0;
     display:flex;gap:1.3rem;align-items:flex-start;
   }
   .pub:last-child{border-bottom:none;}
   .pub-thumb{
-    width:130px;height:90px;flex-shrink:0;border-radius:6px;
+    width:128px;height:88px;flex-shrink:0;border-radius:6px;
     background:var(--accent-bg);
     display:flex;align-items:center;justify-content:center;
-    color:var(--ink-faint);font-size:0.72rem;text-align:center;
-    overflow:hidden;
+    color:var(--ink-faint);font-size:0.7rem;text-align:center;
+    overflow:hidden;border:1px solid var(--line);
   }
-  .pub-thumb img{width:100%;height:100%;object-fit:cover;}
+  .pub-thumb img{width:100%;height:100%;object-fit:contain;background:var(--thumb-bg);}
   .pub-venue{
-    display:inline-block;font-size:0.76rem;color:var(--accent);
-    background:var(--accent-bg);padding:0.18rem 0.6rem;border-radius:4px;
-    margin-bottom:0.5rem;
+    display:block;font-size:0.82rem;color:var(--ink-faint);
+    margin:0 0 0.25rem;line-height:1.4;font-weight:400;
   }
   .pub-title{
-    font-family:'Newsreader',serif;font-weight:500;font-size:1.08rem;
-    margin:0 0 0.3rem;color:var(--ink);
+    font-family:'Inter',sans-serif;font-weight:500;font-size:0.94rem;
+    margin:0 0 0.3rem;color:var(--ink);line-height:1.55;
   }
-  .pub-authors{color:var(--ink-soft);font-size:0.88rem;margin:0 0 0.4rem;}
-  .pub-authors .me{color:var(--ink);font-weight:600;}
-  .pub-desc{color:var(--ink-soft);font-size:0.93rem;margin:0 0 0.5rem;max-width:56ch;}
-  .pub-links{font-size:0.85rem;}
-  .pub-links a{margin-right:0.9rem;}
-
-  .edu{border-bottom:1px solid var(--line);padding:1.3rem 0;}
-  .edu:last-child{border-bottom:none;}
-  .edu-when{color:var(--ink-faint);font-size:0.82rem;margin:0 0 0.35rem;}
-  .edu-title{
-    font-family:'Newsreader',serif;font-weight:500;font-size:1.05rem;
-    margin:0 0 0.25rem;color:var(--ink);
-  }
-  .edu-place{color:var(--ink-soft);font-size:0.92rem;margin:0 0 0.4rem;}
-  .edu-desc{color:var(--ink-soft);font-size:0.92rem;margin:0;max-width:60ch;}
+  .pub-authors{color:var(--ink-soft);font-size:0.94rem;margin:0 0 0.35rem;line-height:1.55;}
+  .pub-authors .me{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:2px;}
+  .pub-links{font-size:0.94rem;margin-top:0.35rem;line-height:1.55;}
+  .pub-links a{color:var(--link);margin-right:0.85rem;}
+  .pub-links a:hover{text-decoration:underline;}
 
   footer{
     margin-top:3rem;font-size:0.82rem;color:var(--ink-faint);
@@ -139,146 +231,216 @@
   @media(max-width:520px){
     .wrap{padding:3rem 1.25rem 3.5rem;}
     .header{gap:1rem;}
-    .avatar{width:64px;height:64px;font-size:1.5rem;}
-    h1{font-size:1.6rem;}
+    .avatar{width:140px;height:140px;font-size:2.25rem;}
+    h1{font-size:1.55rem;}
     .pub{flex-direction:column;}
-    .pub-thumb{width:100%;height:150px;}
+    .pub-thumb{width:100%;height:140px;}
+    .inst-badge img{height:2.1rem;}
+    .inst-badge img.logo-tall{height:2.7rem;}
+    .news-list li{grid-template-columns:4.75rem 1fr;gap:1rem;}
+    .theme-toggle{top:1rem;right:1rem;}
   }
 </style>
 </head>
 <body>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode">
+  <span class="theme-icon" aria-hidden="true">☀</span>
+  <span class="theme-switch" aria-hidden="true"></span>
+  <span class="theme-icon" aria-hidden="true">☾</span>
+</button>
 <div class="wrap">
 
   <div class="header">
-    <img class="avatar" src="assets/img/profile.jpg" alt="Photo of Thinesh" onerror="this.style.display='none'">
+    <img class="avatar" src="assets/Thinesh_Picture.jpg" alt="Thinesh Thiyakesan Ponbagavathi"
+         onerror="this.onerror=null;this.outerHTML='<div class=\'avatar\' aria-hidden=true>TT</div>'">
     <div>
-      <h1>Thinesh</h1>
-      <p class="tagline">PhD Candidate in Video Foundation Model Adaptation</p>
+      <h1>Thinesh Thiyakesan Ponbagavathi</h1>
+      <p class="tagline">PhD Candidate in Computer Science</p>
+      <p class="location">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        Stuttgart, Germany
+      </p>
     </div>
   </div>
 
-  <div class="institutions">
-    <a href="https://www.uni-stuttgart.de/en/">University of Stuttgart</a>
-    <a href="https://imprs-is.mpg.de/">IMPRS-IS</a>
-    <a href="https://www.amazon.science/">Amazon</a>
-    <a href="https://www.uni-muenster.de/Informatik/en/">Institut für Informatik, Münster</a>
-  </div>
-
   <p class="contact">
-    <a href="mailto:your-email@example.com">Email</a><a href="https://github.com/yourusername">GitHub</a><a href="https://scholar.google.com/">Scholar</a><a href="https://www.linkedin.com/">LinkedIn</a><a href="#">CV</a>
+    <a href="mailto:thiyakesan@uni-hildesheim.de">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      Email
+    </a>
+    <a href="https://scholar.google.com/citations?user=eRoC6a0AAAAJ&hl=en">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5z"/><path d="M6 11v4c0 0 3.5 2.5 6 2.5s6-2.5 6-2.5v-4"/><path d="M22 8v6"/></svg>
+      Scholar
+    </a>
+    <a href="https://github.com/th-nesh">
+      <svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.52 2.87 8.35 6.84 9.71.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.36-3.37-1.36-.45-1.17-1.11-1.48-1.11-1.48-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.64-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.2 9.2 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.03 10.03 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/></svg>
+      GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/thinesh-tp/">
+      <svg class="icon icon-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.35-1.85 3.58 0 4.24 2.36 4.24 5.43v6.31zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+      LinkedIn
+    </a>
+    <a href="assets/cv.pdf">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6M9 9h1"/></svg>
+      CV
+    </a>
   </p>
 
   <section class="about">
     <h2>About</h2>
     <p>
-      I am a PhD candidate at the University of Stuttgart, advised by
-      <strong>Prof. Dr. Alina Roitberg</strong>, and a member of the
-      International Max Planck Research School for Intelligent Systems
-      (IMPRS-IS). My research focuses on
-      <strong>parameter-efficient adaptation of frozen vision foundation
-      models</strong> &mdash; such as DINOv2 and CLIP &mdash; for
-      fine-grained video understanding, favoring lightweight and often
-      training-free methods over full fine-tuning.
+      My research uses parameter-efficient fine-tuning to adapt vision foundation
+      models for fine-grained video understanding, with a focus on group activity
+      understanding, cross-view generalization, and human-robot interaction.
     </p>
+    <p>
+      Currently, I am a PhD candidate in Computer Science at the
+      <a href="https://www.uni-stuttgart.de/en/">University of Stuttgart</a>,
+      advised by <a href="https://aroitberg.github.io/">Prof. Dr. Alina Roitberg</a>, and a scholar at
+      <a href="https://imprs-is.mpg.de/">IMPRS-IS</a>.
+      This fall, I join <a href="https://www.amazon.science/">Amazon</a> as an
+      Applied Scientist Intern in Santa Clara, California. Previously, I worked at
+      <a href="https://www.bosch.com/">Robert Bosch GmbH</a> as a working student
+      and at <a href="https://www.johnsoncontrols.com/">Johnson Controls</a> as a
+      Lead Controls Engineer.
     </p>
   </section>
 
-  <section>
-    <h2>Research interests</h2>
-    <div class="tags">
-      <span class="tag">Video Understanding</span>
-      <span class="tag">Vision Foundation Models</span>
-      <span class="tag">Parameter-Efficient Adaptation</span>
-      <span class="tag">Fine-Grained Action Recognition</span>
-      <span class="tag">Self-Supervised Learning</span>
+  <section class="news-section">
+    <h2>News</h2>
+    <div class="news-scroll">
+      <ul class="news-list">
+        <li><span class="date">Aug 2026</span><span>Joining <a href="https://www.amazon.science/">Amazon</a> as an Applied Scientist Intern in Santa Clara, California 🇺🇸</span></li>
+        <li><span class="date">Jul 2026</span><span>Attending International Computer Vision Summer School (<a href="https://icvss.dmi.unict.it/icvss2026/">ICVSS 2026</a>) in Sicily 🇮🇹</span></li>
+        <li><span class="date">Jun 2026</span><span>Attending <a href="https://cvpr.thecvf.com/">CVPR 2026</a> in Denver 🇺🇸</span></li>
+        <li><span class="date">Mar 2026</span><span>Attending <a href="https://visapp.scitevents.org/?y=2026">VISAPP 2026</a> in Marbella 🇪🇸</span></li>
+        <li><span class="date">Feb 2026</span><span>Our work on <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Ponbagavathi_Frame2Freq_Spectral_Adapters_for_Fine-Grained_Video_Understanding_CVPR_2026_paper.pdf">Frequency adapters for fine-grained video understanding</a> accepted to CVPR 2026.</span></li>
+        <li><span class="date">Feb 2026</span><span>Our work on <a href="https://openaccess.thecvf.com/content/CVPR2026W/SAUAFG/papers/Ponbagavathi_Structured_Relational_Reasoning_for_Group_Activity_Assessment_CVPRW_2026_paper.pdf">efficient decoders for vision foundation models in group activity detection</a> accepted to the SAUAFG Workshop at CVPR 2026.</span></li>
+        <li><span class="date">Jan 2026</span><span>Our work on <a href="https://arxiv.org/abs/2503.24298">Nearly symmetric actions and order-aware image-to-video probing</a> accepted to ICRA 2026.</span></li>
+        <li><span class="date">Jan 2026</span><span>Our work on <a href="https://www.scitepress.org/Papers/2026/144772/144772.pdf">Pruning and distillation for real-time worker activity recognition</a> accepted to VISAPP 2026.</span></li>
+        <li><span class="date">Nov 2025</span><span>Attending <a href="https://ieee-itsc.org/2025/">ITSC 2025</a> on the Gold Coast 🇦🇺</span></li>
+        <li><span class="date">Nov 2025</span><span><a href="https://arxiv.org/pdf/2508.16207">Temporal masking for cross-view foundation model probing in driver monitoring</a> named Best Student Paper Finalist 🏆 (Top 5) at ITSC 2025.</span></li>
+        <li><span class="date">Oct 2025</span><span>Oral presentation at the <a href="https://www.hlrs.de/event/2025/review-ws-28">HLRS Workshop</a> on High Performance Computing in Science &amp; Engineering, Stuttgart 🇩🇪</span></li>
+        <li><span class="date">Jul 2025</span><span>Our work on <a href="https://arxiv.org/pdf/2508.16207">temporal masking for cross-view foundation model probing in driver monitoring</a> accepted to ITSC 2025.</span></li>
+        <li><span class="date">Feb 2025</span><span>Joined the International Max Planck Research School for Intelligent Systems (IMPRS-IS).</span></li>
+        <li><span class="date">Jan 2024</span><span>Started PhD at University of Stuttgart.</span></li>
+      </ul>
     </div>
   </section>
 
-  <section>
-    <h2>News</h2>
-    <ul class="news-list">
-      <li><span class="date">12/2026</span> &mdash; I move to Münster's Institut für Informatik.</li>
-      <li><span class="date">08/2026</span> &mdash; I join Amazon as an Applied Scientist Intern in Santa Clara for four months.</li>
-      <li><span class="date">2026</span> &mdash; Our paper <strong>Frame2Freq</strong> was accepted at CVPR 2026!</li>
-      <li><span class="date">2026</span> &mdash; Our paper <strong>STEP (Order Matters)</strong> was accepted at ICRA 2026!</li>
-      <li><span class="date">2026</span> &mdash; Our workshop paper <strong>ProGraD</strong> was accepted at the SAUAFG workshop, CVPR 2026!</li>
-      <li><span class="date">2025</span> &mdash; <strong>T-MASK</strong> was named a Best Student Paper Finalist at ITSC 2025!</li>
-    </ul>
-  </section>
+  <div class="institutions">
+    <a class="inst-badge" href="https://www.uni-stuttgart.de/en/" title="University of Stuttgart">
+      <img src="assets/logo-ustuttgart.png" alt="University of Stuttgart">
+    </a>
+    <a class="inst-badge" href="https://imprs-is.mpg.de/" title="IMPRS-IS">
+      <img class="logo-wide" src="assets/logo-imprs-is.png" alt="IMPRS-IS">
+    </a>
+    <a class="inst-badge" href="https://www.intcdc.uni-stuttgart.de/" title="IntCDC Cluster of Excellence">
+      <img src="assets/logo-intcdc.png" alt="IntCDC">
+    </a>
+    <a class="inst-badge" href="https://www.uni-hildesheim.de/" title="University of Hildesheim">
+      <img class="logo-tall" src="assets/logo-hildesheim.png" alt="University of Hildesheim">
+    </a>
+    <a class="inst-badge" href="https://www.amazon.science/" title="Amazon">
+      <img src="assets/logo-amazon.png" alt="Amazon">
+    </a>
+  </div>
 
-  <section>
+  <section class="pub-section">
     <h2>Publications</h2>
 
     <div class="pub">
-      <div class="pub-thumb"><img src="assets/img/frame2freq_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div class="pub-thumb"><img src="assets/Frame2Freq.png" alt="Frame2Freq teaser"></div>
       <div>
         <span class="pub-venue">CVPR 2026</span>
-        <p class="pub-title">Frame2Freq</p>
-        <p class="pub-authors"><span class="me">Thinesh</span>, Constantin Seibold, <em>[+ coauthors &mdash; add full list]</em></p>
-        <p class="pub-desc">Multi-windowed FFT adapters for fine-grained video recognition.</p>
-        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+        <p class="pub-title">Frame2Freq: Spectral Adapters for Fine-Grained Video Understanding</p>
+        <p class="pub-authors"><span class="me">Thinesh Thiyakesan Ponbagavathi</span>, Constantin Seibold, Alina Roitberg</p>
+        <p class="pub-links"><a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Ponbagavathi_Frame2Freq_Spectral_Adapters_for_Fine-Grained_Video_Understanding_CVPR_2026_paper.pdf">paper</a><a href="https://github.com/th-nesh/Frame2Freq">code</a><a href="#">bibtex</a></p>
       </div>
     </div>
 
     <div class="pub">
-      <div class="pub-thumb"><img src="assets/img/step_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div class="pub-thumb"><img src="assets/STEP.png" alt="Order Matters teaser"></div>
       <div>
         <span class="pub-venue">ICRA 2026</span>
-        <p class="pub-title">STEP (Order Matters)</p>
-        <p class="pub-authors"><span class="me">Thinesh</span>, <em>[+ coauthors &mdash; add full list]</em></p>
-        <p class="pub-desc">Nearly symmetric action probing.</p>
-        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+        <p class="pub-title">Order Matters: On Parameter-Efficient Image-to-Video Probing for Recognizing Nearly Symmetric Actions</p>
+        <p class="pub-authors"><span class="me">Thinesh Thiyakesan Ponbagavathi</span>, Alina Roitberg</p>
+        <p class="pub-links"><a href="https://arxiv.org/abs/2503.24298">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
       </div>
     </div>
 
     <div class="pub">
-      <div class="pub-thumb"><img src="assets/img/tmask_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div class="pub-thumb"><img src="assets/ProGraD.png" alt="ProGraD teaser"></div>
       <div>
-        <span class="pub-venue">ITSC 2025 &middot; Best Student Paper Finalist</span>
-        <p class="pub-title">T-MASK</p>
-        <p class="pub-authors"><span class="me">Thinesh</span>, <em>[+ coauthors &mdash; add full list]</em></p>
-        <p class="pub-desc">View-invariant token selection.</p>
-        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+        <span class="pub-venue">SAUAFG Workshop &middot; CVPR 2026</span>
+        <p class="pub-title">Structured Relational Reasoning for Group Activity Assessment</p>
+        <p class="pub-authors"><span class="me">Thinesh Thiyakesan Ponbagavathi</span><sup>*</sup>, Chengzheng Yang<sup>*</sup>, Alina Roitberg <span style="color:var(--ink-faint);font-size:0.82rem;">(*equal contribution)</span></p>
+        <p class="pub-links"><a href="https://openaccess.thecvf.com/content/CVPR2026W/SAUAFG/papers/Ponbagavathi_Structured_Relational_Reasoning_for_Group_Activity_Assessment_CVPRW_2026_paper.pdf">paper</a><a href="#">bibtex</a></p>
       </div>
     </div>
 
     <div class="pub">
-      <div class="pub-thumb"><img src="assets/img/prograd_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div class="pub-thumb"><img src="assets/PDNet.png" alt="PDNet teaser"></div>
       <div>
-        <span class="pub-venue">CVPR 2026 &middot; SAUAFG Workshop</span>
-        <p class="pub-title">ProGraD</p>
-        <p class="pub-authors"><span class="me">Thinesh</span>, Chengzheng Yang, <em>[+ coauthors &mdash; add full list]</em></p>
-        <p class="pub-desc">Group activity detection; shows that substituting the vision foundation model degrades performance, with the decoder as the bottleneck.</p>
-        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+        <span class="pub-venue">VISAPP 2026 &middot; Oral</span>
+        <p class="pub-title">PDNet: Exploring Pruning and Distillation for Real-Time Worker Activity Recognition in Industrial Assembly</p>
+        <p class="pub-authors">Malek Baba, <span class="me">Thinesh Thiyakesan Ponbagavathi</span>, Alina Roitberg</p>
+        <p class="pub-links"><a href="https://www.scitepress.org/Papers/2026/144772/144772.pdf">paper</a><a href="#">bibtex</a></p>
       </div>
     </div>
 
     <div class="pub">
-      <div class="pub-thumb"><img src="assets/img/scenegraphrag_teaser.png" alt="" onerror="this.parentElement.textContent='teaser image'"></div>
+      <div class="pub-thumb"><img src="assets/T-MASK.png" alt="T-MASK teaser"></div>
       <div>
-        <span class="pub-venue"></span>
-        <p class="pub-title">SceneGraphRAG</p>
-        <p class="pub-authors"><em>[first author]</em>, <span class="me">Thinesh</span>, <em>[+ coauthors &mdash; add full list]</em></p>
-        <p class="pub-desc">Robot grounding via 3D scene graphs.</p>
-        <p class="pub-links"><a href="#">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+        <span class="pub-venue">ITSC 2025 &middot; Best Student Paper Finalist 🏆</span>
+        <p class="pub-title">T-MASK: Temporal Masking for Probing Foundation Models across Camera Views in Driver Monitoring</p>
+        <p class="pub-authors"><span class="me">Thinesh Thiyakesan Ponbagavathi</span>, Kunyu Peng, Alina Roitberg</p>
+        <p class="pub-links"><a href="https://arxiv.org/pdf/2508.16207">paper</a><a href="https://github.com/th-nesh/T-MASK">code</a><a href="#">bibtex</a></p>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="edu-section">
     <h2>Education</h2>
     <div class="edu">
-      <p class="edu-when">Ongoing</p>
+      <p class="edu-when">2024 &ndash; Present</p>
       <p class="edu-title">Ph.D., Computer Science</p>
       <p class="edu-place">University of Stuttgart &middot; IMPRS-IS</p>
-      <p class="edu-desc">Parameter-efficient adaptation of frozen vision foundation models for fine-grained video understanding. Advised by Prof. Dr. Alina Roitberg.</p>
+      <p class="edu-desc">Advised by Prof. Dr. Alina Roitberg. Research on parameter-efficient adaptation of vision foundation models for fine-grained video understanding.</p>
+    </div>
+    <div class="edu">
+      <p class="edu-when">2021 &ndash; 2023</p>
+      <p class="edu-title">M.Sc. Electrical Engineering (Smart Systems)</p>
+      <p class="edu-place">University of Stuttgart</p>
+      <p class="edu-desc">Thesis: <em>3D-Aware Urban Scene Generation</em>, advised by Prof. Dr. Bin Yang.</p>
+    </div>
+    <div class="edu">
+      <p class="edu-when">2014 &ndash; 2018</p>
+      <p class="edu-title">B.E. Electronics and Instrumentation Engineering</p>
+      <p class="edu-place">Anna University, India</p>
+      <p class="edu-desc">Thesis: <em>Cognitive Smart Cities using LoRa</em>, advised by Prof. Dr. C. Esakkiappan.</p>
     </div>
   </section>
 
   <footer>
-    &copy; Thinesh &middot; last updated 2026
+    &copy; Thinesh Thiyakesan Ponbagavathi &middot; last updated July 2026
   </footer>
 
 </div>
+<script>
+(function(){
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-toggle');
+  function isDark(){ return root.getAttribute('data-theme') === 'dark'; }
+  function setTheme(dark){
+    if (dark) root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  }
+  btn.addEventListener('click', function(){ setTheme(!isDark()); });
+  btn.setAttribute('aria-label', isDark() ? 'Switch to light mode' : 'Switch to dark mode');
+})();
+</script>
 </body>
 </html>
