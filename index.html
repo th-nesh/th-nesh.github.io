@@ -110,8 +110,12 @@
   .inst-badge img.logo-tall{height:3.2rem;}
   .inst-badge img.logo-wide{height:2.1rem;max-width:9.5rem;}
   [data-theme="dark"] .inst-badge img[src*="logo-ustuttgart"],
-  [data-theme="dark"] .inst-badge img[src*="logo-amazon"]{
+  [data-theme="dark"] .inst-badge img[src*="logo-amazon"],
+  [data-theme="dark"] .inst-badge img[src*="logo-intcdc"]{
     filter:brightness(0) invert(1);
+  }
+  [data-theme="dark"] .inst-badge img[src*="logo-hildesheim"]{
+    filter:invert(1) hue-rotate(180deg);
   }
   h1{
     font-family:'Newsreader',serif;font-weight:500;
@@ -222,6 +226,16 @@
   .pub-links{font-size:0.94rem;margin-top:0.35rem;line-height:1.55;}
   .pub-links a{color:var(--link);margin-right:0.85rem;}
   .pub-links a:hover{text-decoration:underline;}
+  .pub-body{flex:1;min-width:0;}
+  .bibtex-block{
+    display:none;margin:0.65rem 0 0;padding:0.75rem 0.9rem;
+    background:var(--accent-bg);border:1px solid var(--line);border-radius:6px;
+    font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    font-size:0.76rem;line-height:1.5;color:var(--ink-soft);
+    white-space:pre-wrap;overflow-x:auto;max-width:100%;
+  }
+  .bibtex-block.is-open{display:block;}
+  .bibtex-toggle.is-open{text-decoration:underline;}
 
   footer{
     margin-top:3rem;font-size:0.82rem;color:var(--ink-faint);
@@ -289,15 +303,16 @@
   <section class="about">
     <h2>About</h2>
     <p>
-      My research uses parameter-efficient fine-tuning to adapt vision foundation
-      models for fine-grained video understanding, with a focus on group activity
-      understanding, cross-view generalization, and human-robot interaction.
+      My research focusses on parameter-efficient fine-tuning techniques to adapt
+      vision foundation models for fine-grained video understanding, with a focus on
+      group activity understanding, cross-view generalization, and human-robot
+      interaction.
     </p>
     <p>
       Currently, I am a PhD candidate in Computer Science at the
       <a href="https://www.uni-stuttgart.de/en/">University of Stuttgart</a>,
       advised by <a href="https://aroitberg.github.io/">Prof. Dr. Alina Roitberg</a>, and a scholar at
-      <a href="https://imprs-is.mpg.de/">IMPRS-IS</a>.
+      <a href="https://imprs.is.mpg.de/">IMPRS-IS</a>.
       This fall, I join <a href="https://www.amazon.science/">Amazon</a> as an
       Applied Scientist Intern in Santa Clara, California. Previously, I worked at
       <a href="https://www.bosch.com/">Robert Bosch GmbH</a> as a working student
@@ -332,7 +347,7 @@
     <a class="inst-badge" href="https://www.uni-stuttgart.de/en/" title="University of Stuttgart">
       <img src="assets/logo-ustuttgart.png" alt="University of Stuttgart">
     </a>
-    <a class="inst-badge" href="https://imprs-is.mpg.de/" title="IMPRS-IS">
+    <a class="inst-badge" href="https://imprs.is.mpg.de/" title="IMPRS-IS">
       <img class="logo-wide" src="assets/logo-imprs-is.png" alt="IMPRS-IS">
     </a>
     <a class="inst-badge" href="https://www.intcdc.uni-stuttgart.de/" title="IntCDC Cluster of Excellence">
@@ -351,51 +366,94 @@
 
     <div class="pub">
       <div class="pub-thumb"><img src="assets/Frame2Freq.png" alt="Frame2Freq teaser"></div>
-      <div>
+      <div class="pub-body">
         <span class="pub-venue">CVPR 2026</span>
         <p class="pub-title">Frame2Freq: Spectral Adapters for Fine-Grained Video Understanding</p>
         <p class="pub-authors"><span class="me">Thinesh Thiyakesan Ponbagavathi</span>, Constantin Seibold, Alina Roitberg</p>
-        <p class="pub-links"><a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Ponbagavathi_Frame2Freq_Spectral_Adapters_for_Fine-Grained_Video_Understanding_CVPR_2026_paper.pdf">paper</a><a href="https://github.com/th-nesh/Frame2Freq">code</a><a href="#">bibtex</a></p>
+        <p class="pub-links"><a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Ponbagavathi_Frame2Freq_Spectral_Adapters_for_Fine-Grained_Video_Understanding_CVPR_2026_paper.pdf">paper</a><a href="https://github.com/th-nesh/Frame2Freq">code</a><a href="#" class="bibtex-toggle">bibtex</a></p>
+        <pre class="bibtex-block">@InProceedings{Ponbagavathi_2026_CVPR,
+    author    = {Ponbagavathi, Thinesh Thiyakesan and Seibold, Constantin and Roitberg, Alina},
+    title     = {Frame2Freq: Spectral Adapters for Fine-Grained Video Understanding},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2026},
+    pages     = {24073-24083}
+}</pre>
       </div>
     </div>
 
     <div class="pub">
       <div class="pub-thumb"><img src="assets/STEP.png" alt="Order Matters teaser"></div>
-      <div>
+      <div class="pub-body">
         <span class="pub-venue">ICRA 2026</span>
         <p class="pub-title">Order Matters: On Parameter-Efficient Image-to-Video Probing for Recognizing Nearly Symmetric Actions</p>
         <p class="pub-authors"><span class="me">Thinesh Thiyakesan Ponbagavathi</span>, Alina Roitberg</p>
-        <p class="pub-links"><a href="https://arxiv.org/abs/2503.24298">paper</a><a href="#">code</a><a href="#">bibtex</a></p>
+        <p class="pub-links"><a href="https://arxiv.org/abs/2503.24298">paper</a><a href="https://github.com/th-nesh/STEP">code</a><a href="#" class="bibtex-toggle">bibtex</a></p>
+        <pre class="bibtex-block">@article{ponbagavathi2025order,
+  title={Order Matters: On Parameter-Efficient Image-to-Video Probing for Recognizing Nearly Symmetric Actions},
+  author={Ponbagavathi, Thinesh Thiyakesan and Roitberg, Alina},
+  journal={arXiv preprint arXiv:2503.24298},
+  year={2025}
+}</pre>
       </div>
     </div>
 
     <div class="pub">
       <div class="pub-thumb"><img src="assets/ProGraD.png" alt="ProGraD teaser"></div>
-      <div>
+      <div class="pub-body">
         <span class="pub-venue">SAUAFG Workshop &middot; CVPR 2026</span>
         <p class="pub-title">Structured Relational Reasoning for Group Activity Assessment</p>
         <p class="pub-authors"><span class="me">Thinesh Thiyakesan Ponbagavathi</span><sup>*</sup>, Chengzheng Yang<sup>*</sup>, Alina Roitberg <span style="color:var(--ink-faint);font-size:0.82rem;">(*equal contribution)</span></p>
-        <p class="pub-links"><a href="https://openaccess.thecvf.com/content/CVPR2026W/SAUAFG/papers/Ponbagavathi_Structured_Relational_Reasoning_for_Group_Activity_Assessment_CVPRW_2026_paper.pdf">paper</a><a href="#">bibtex</a></p>
+        <p class="pub-links"><a href="https://openaccess.thecvf.com/content/CVPR2026W/SAUAFG/papers/Ponbagavathi_Structured_Relational_Reasoning_for_Group_Activity_Assessment_CVPRW_2026_paper.pdf">paper</a><a href="#" class="bibtex-toggle">bibtex</a></p>
+        <pre class="bibtex-block">@InProceedings{Ponbagavathi_2026_CVPRW,
+    author    = {Ponbagavathi, Thinesh Thiyakesan and Yang, Chengzheng and Roitberg, Alina},
+    title     = {Structured Relational Reasoning for Group Activity Assessment},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+    month     = {June},
+    year      = {2026},
+    pages     = {8931-8940}
+}</pre>
       </div>
     </div>
 
     <div class="pub">
       <div class="pub-thumb"><img src="assets/PDNet.png" alt="PDNet teaser"></div>
-      <div>
+      <div class="pub-body">
         <span class="pub-venue">VISAPP 2026 &middot; Oral</span>
         <p class="pub-title">PDNet: Exploring Pruning and Distillation for Real-Time Worker Activity Recognition in Industrial Assembly</p>
         <p class="pub-authors">Malek Baba, <span class="me">Thinesh Thiyakesan Ponbagavathi</span>, Alina Roitberg</p>
-        <p class="pub-links"><a href="https://www.scitepress.org/Papers/2026/144772/144772.pdf">paper</a><a href="#">bibtex</a></p>
+        <p class="pub-links"><a href="https://www.scitepress.org/Papers/2026/144772/144772.pdf">paper</a><a href="#" class="bibtex-toggle">bibtex</a></p>
+        <pre class="bibtex-block">@conference{visapp26,
+author={Malek Baba and Thinesh Thiyakesan Ponbagavathi and Alina Roitberg},
+title={PDNet: Exploring Pruning and Distillation for Real-Time Worker Activity Recognition in Industrial Assembly},
+booktitle={Proceedings of the 21st International Conference on Computer Vision Theory and Applications - Volume 3: VISAPP},
+year={2026},
+pages={624-630},
+publisher={SciTePress},
+organization={INSTICC},
+doi={10.5220/0014477200004084},
+isbn={978-989-758-804-4},
+}</pre>
       </div>
     </div>
 
     <div class="pub">
       <div class="pub-thumb"><img src="assets/T-MASK.png" alt="T-MASK teaser"></div>
-      <div>
+      <div class="pub-body">
         <span class="pub-venue">ITSC 2025 &middot; Best Student Paper Finalist 🏆</span>
         <p class="pub-title">T-MASK: Temporal Masking for Probing Foundation Models across Camera Views in Driver Monitoring</p>
         <p class="pub-authors"><span class="me">Thinesh Thiyakesan Ponbagavathi</span>, Kunyu Peng, Alina Roitberg</p>
-        <p class="pub-links"><a href="https://arxiv.org/pdf/2508.16207">paper</a><a href="https://github.com/th-nesh/T-MASK">code</a><a href="#">bibtex</a></p>
+        <p class="pub-links"><a href="https://arxiv.org/pdf/2508.16207">paper</a><a href="https://github.com/th-nesh/T-MASK">code</a><a href="#" class="bibtex-toggle">bibtex</a></p>
+        <pre class="bibtex-block">@INPROCEEDINGS{T_MASK_Ponbagavathi,
+  author={Ponbagavathi, Thinesh Thiyakesan and Peng, Kunyu and Roitberg, Alina},
+  booktitle={2025 IEEE 28th International Conference on Intelligent Transportation Systems (ITSC)}, 
+  title={T-Mask: Temporal Masking for Probing Foundation Models Across Camera Views in Driver Monitoring}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={2927-2934},
+  keywords={Training;Accuracy;Sensitivity;Foundation models;Activity recognition;Benchmark testing;Cameras;Robustness;Monitoring;Videos;Driver Activity Recognition;Cross-view Generalization;Vision Foundation Models},
+  doi={10.1109/ITSC60802.2025.11423550}}</pre>
       </div>
     </div>
   </section>
@@ -404,7 +462,7 @@
     <h2>Education</h2>
     <div class="edu">
       <p class="edu-when">2024 &ndash; Present</p>
-      <p class="edu-title">Ph.D., Computer Science</p>
+      <p class="edu-title">Ph.D. Computer Science</p>
       <p class="edu-place">University of Stuttgart &middot; IMPRS-IS</p>
       <p class="edu-desc">Advised by Prof. Dr. Alina Roitberg. Research on parameter-efficient adaptation of vision foundation models for fine-grained video understanding.</p>
     </div>
@@ -413,12 +471,6 @@
       <p class="edu-title">M.Sc. Electrical Engineering (Smart Systems)</p>
       <p class="edu-place">University of Stuttgart</p>
       <p class="edu-desc">Thesis: <em>3D-Aware Urban Scene Generation</em>, advised by Prof. Dr. Bin Yang.</p>
-    </div>
-    <div class="edu">
-      <p class="edu-when">2014 &ndash; 2018</p>
-      <p class="edu-title">B.E. Electronics and Instrumentation Engineering</p>
-      <p class="edu-place">Anna University, India</p>
-      <p class="edu-desc">Thesis: <em>Cognitive Smart Cities using LoRa</em>, advised by Prof. Dr. C. Esakkiappan.</p>
     </div>
   </section>
 
@@ -441,6 +493,17 @@
   btn.addEventListener('click', function(){ setTheme(!isDark()); });
   btn.setAttribute('aria-label', isDark() ? 'Switch to light mode' : 'Switch to dark mode');
 })();
+
+document.querySelectorAll('.bibtex-toggle').forEach(function(link){
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    var block = link.closest('.pub-body').querySelector('.bibtex-block');
+    if (!block) return;
+    var open = block.classList.toggle('is-open');
+    link.classList.toggle('is-open', open);
+    link.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
 </script>
 </body>
 </html>
